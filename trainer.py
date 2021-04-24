@@ -11,8 +11,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from dataset import Dataset
 from params import Params
-from de_distmult import DE_DistMult #global argument
-from de_transe import DE_TransE
 from de_simple import DE_SimplE
 from tester import Tester
 
