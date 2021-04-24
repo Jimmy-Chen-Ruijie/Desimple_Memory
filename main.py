@@ -43,7 +43,7 @@ params = Params(
 )
 
 writer = SummaryWriter("./exp_result")
-trainer = Trainer(dataset, params, args.model) #select the model by args.model
+trainer = Trainer(dataset, params, args.model, writer) #select the model by args.model
 trainer.train()
 
 # validating the trained models. we select the model that has the best validation performance as the final model

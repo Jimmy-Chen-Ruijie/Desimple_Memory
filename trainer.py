@@ -15,14 +15,15 @@ from de_simple import DE_SimplE
 from tester import Tester
 
 class Trainer:
-    def __init__(self, dataset, params, model_name):
+    def __init__(self, dataset, params, model_name, writer):
         instance_gen = globals()[model_name]
         self.model_name = model_name
         #self.model = nn.DataParallel(instance_gen(dataset=dataset, params=params)) #就好像是nn.DataParallel(DE_DistMult(dataset,params))
         self.model = instance_gen(dataset=dataset, params=params).to("cuda:0")
         self.dataset = dataset
         self.params = params
-        
+        self.writer = writer
+
     def train(self, early_stop=False):
         self.model.train()
         
@@ -60,7 +61,9 @@ class Trainer:
                 
             print(time.time() - start)
             print("Loss in iteration " + str(epoch) + ": " + str(total_loss) + "(" + self.model_name + "," + self.dataset.name + ")")
-            
+
+            self.writer.add_scalar('total_loss', total_loss, epoch)
+
             if epoch % self.params.save_each == 0:
                 self.saveModel(epoch)
             
