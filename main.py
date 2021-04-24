@@ -16,14 +16,14 @@ parser = argparse.ArgumentParser(description=desc)
 
 parser.add_argument('-dataset', help='Dataset', type=str, default='icews14', choices = ['icews14', 'icews05-15', 'gdelt'])
 parser.add_argument('-model', help='Model', type=str, default='DE_SimplE', choices = ['DE_DistMult', 'DE_TransE', 'DE_SimplE'])
-parser.add_argument('-ne', help='Number of epochs', type=int, default=4, choices = [4]) #originally 500
+parser.add_argument('-ne', help='Number of epochs', type=int, default=500, choices = [500]) #originally 500
 parser.add_argument('-bsize', help='Batch size', type=int, default=256, choices = [256]) #originally 512
 parser.add_argument('-lr', help='Learning rate', type=float, default=0.001, choices = [0.001])
 parser.add_argument('-reg_lambda', help='L2 regularization parameter', type=float, default=0.0, choices = [0.0])
 parser.add_argument('-emb_dim', help='Embedding dimension', type=int, default=100, choices = [100])
 parser.add_argument('-neg_ratio', help='Negative ratio', type=int, default=500, choices = [500])
 parser.add_argument('-dropout', help='Dropout probability', type=float, default=0.4, choices = [0.0, 0.2, 0.4])
-parser.add_argument('-save_each', help='Save model and validate each K epochs', type=int, default=2, choices = [2]) #originally 20
+parser.add_argument('-save_each', help='Save model and validate each K epochs', type=int, default=20, choices = [20]) #originally 20
 parser.add_argument('-se_prop', help='Static embedding proportion', type=float, default=0.68)
 
 args = parser.parse_args()
